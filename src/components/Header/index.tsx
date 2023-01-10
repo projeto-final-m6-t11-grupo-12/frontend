@@ -14,6 +14,8 @@ import { limitString } from "../../utils";
 import { IFullUser, UserContext } from "../../providers/user";
 import { IHeaderProps } from "../../interfaces/header";
 
+import { ProductContext } from "../../providers/product";
+
 function Header({ yPositions }: IHeaderProps) {
     const [isDesktop, setIsDesktop] = useState<boolean>(
         window.innerWidth > 768
@@ -24,6 +26,8 @@ function Header({ yPositions }: IHeaderProps) {
     const [isAdvertiser, setIsAdvertiser] = useState<boolean>(false);
 
     const [avatar, setAvatar] = useState<string>("...");
+    const { change } = useContext(ProductContext);
+
     const { isAuthenticated, getUserById, setIsAuthenticated } =
         useContext(UserContext);
 
@@ -64,7 +68,7 @@ function Header({ yPositions }: IHeaderProps) {
                 }
             });
         }
-    }, []);
+    }, [change]);
 
     return (
         <>

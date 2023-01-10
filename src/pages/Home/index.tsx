@@ -42,20 +42,26 @@ function Home() {
             <UnderHeaderBackground />
             <ProductCardAuctionList />
             <ProductListSection>
-                <ProductCardList
-                    id="cars"
-                    advertise={false}
-                    showActivity={false}
-                    title={"Carro"}
-                    productList={cars}
-                />
-                <ProductCardList
-                    id="motorcycles"
-                    advertise={false}
-                    showActivity={false}
-                    title={"Moto"}
-                    productList={motos}
-                />
+                {cars.length === 0 ? (
+                    true
+                ) : (
+                    <ProductCardList
+                        id="cars"
+                        advertise={false}
+                        showActivity={false}
+                        title={"Carro"}
+                        productList={cars}
+                    />
+                )}
+                {
+                    <ProductCardList
+                        id="motorcycles"
+                        advertise={false}
+                        showActivity={false}
+                        title={"Moto"}
+                        productList={motos}
+                    />
+                }
             </ProductListSection>
             <Footer />
         </StyledHomeBody>
