@@ -12,6 +12,7 @@ import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../../providers/user";
 import { ISimpleProduct, ProductContext } from "../../providers/product";
 import { useNavigate } from "react-router-dom";
+import NoAnnouncement from "../../components/NoAnnouncement";
 
 function ProfileViewAdmin() {
     const [cars, setCars] = useState<ISimpleProduct[]>([]);
@@ -71,20 +72,26 @@ function ProfileViewAdmin() {
                 description={description}
             />
             <ProductListSection>
-                <ProductCardList
-                    title="Carro"
-                    advertise={true}
-                    showActivity={false}
-                    productList={cars}
-                    username={username}
-                />
-                <ProductCardList
-                    title="Moto"
-                    advertise={true}
-                    showActivity={false}
-                    productList={motos}
-                    username={username}
-                />
+                {cars.length === 0 && motos.length === 0 ? (
+                    <NoAnnouncement message="Você ainda não possui nenhum anuncio" />
+                ) : (
+                    <>
+                        <ProductCardList
+                            title="Carro"
+                            advertise={true}
+                            showActivity={false}
+                            productList={cars}
+                            username={username}
+                        />
+                        <ProductCardList
+                            title="Moto"
+                            advertise={true}
+                            showActivity={false}
+                            productList={motos}
+                            username={username}
+                        />
+                    </>
+                )}
             </ProductListSection>
             <Footer />
         </StyledAdminProfileBody>

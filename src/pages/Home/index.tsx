@@ -49,13 +49,16 @@ function Home() {
                     title={"Carro"}
                     productList={cars}
                 />
-                <ProductCardList
-                    id="motorcycles"
-                    advertise={false}
-                    showActivity={false}
-                    title={"Moto"}
-                    productList={motos}
-                />
+
+                {
+                    <ProductCardList
+                        id="motorcycles"
+                        advertise={false}
+                        showActivity={false}
+                        title={"Moto"}
+                        productList={motos}
+                    />
+                }
             </ProductListSection>
             <Footer />
         </StyledHomeBody>
